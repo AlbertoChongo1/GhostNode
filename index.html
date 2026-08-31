@@ -1,88 +1,84 @@
 <!DOCTYPE html>
-
 <html lang="pt">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-```
-<title>GhostNode - Downloads</title>
+    <title>GhostNode - Downloads</title>
 
-<link rel="stylesheet" href="style.css">
-```
-
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-```
-<header>
-    <h1>GhostNode</h1>
-    <p>Downloads de projetos e ficheiros</p>
+<header class="header">
+
+    <div class="logo">
+        GhostNode
+    </div>
+
+    <input
+        type="text"
+        id="search"
+        class="search"
+        placeholder="Buscar..."
+    >
+
+    <button id="themeButton" class="theme-button">
+        ⚙
+    </button>
+
 </header>
+
+
+<nav class="categories">
+
+    <button class="category active" data-category="Todos">
+        Todos
+    </button>
+
+    <button class="category" data-category="Arquivos">
+        📄 Arquivos
+    </button>
+
+    <button class="category" data-category="Códigos">
+        🔑 Códigos
+    </button>
+
+    <button class="category" data-category="Apps">
+        📱 Apps
+    </button>
+
+    <button class="category" data-category="Vídeos">
+        🎥 Vídeos
+    </button>
+
+    <button class="category" data-category="Outros">
+        ••• Outros
+    </button>
+
+</nav>
 
 
 <main>
 
-    <h2>Ficheiros disponíveis</h2>
+    <div id="downloads" class="downloads"></div>
 
-    <div class="files">
-
-
-        <div class="file">
-
-            <div>
-                <h3>Meu Projeto</h3>
-                <p>Projeto desenvolvido por mim</p>
-            </div>
-
-            <a href="downloads/meu-projeto.zip" download>
-                Download
-            </a>
-
-        </div>
-
-
-        <div class="file">
-
-            <div>
-                <h3>Projeto 2</h3>
-                <p>Descrição do projeto</p>
-            </div>
-
-            <a href="downloads/projeto-2.zip" download>
-                Download
-            </a>
-
-        </div>
-
-
-        <div class="file">
-
-            <div>
-                <h3>Documentação</h3>
-                <p>Documentação do projeto</p>
-            </div>
-
-            <a href="downloads/documentacao.pdf" download>
-                Download
-            </a>
-
-        </div>
-
-
+    <div id="noResults" class="no-results">
+        Nenhum ficheiro encontrado.
     </div>
 
 </main>
 
 
 <footer>
-    © <span id="year"></span> GhostNode
+
+    GhostNode © 2026
+
 </footer>
 
 
 <script src="script.js"></script>
-```
 
 </body>
 </html>
