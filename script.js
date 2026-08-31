@@ -1,4 +1,14 @@
-const files = [];
+const files = [
+
+    {
+        name: "7-Zip 26.00 x64",
+        category: "Apps",
+        badge: "EXE",
+        icon: "7-ZIP",
+        file: "downloads/7z2600-x64.exe"
+    }
+
+];
 
 
 const downloads =
