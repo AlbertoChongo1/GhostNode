@@ -1,74 +1,139 @@
-const menuButton = document.getElementById("menuButton");
-const navigation = document.getElementById("navigation");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  }
 
-// Mobile menu
+body {
+font-family: Arial, sans-serif;
+background: #f5f6f8;
+color: #20242a;
+}
 
-menuButton.addEventListener("click", () => {
+/* CABEÇALHO */
+
+header {
+background: #111827;
+color: white;
+text-align: center;
+padding: 45px 20px;
+}
+
+header h1 {
+font-size: 38px;
+}
+
+header p {
+margin-top: 8px;
+color: #aeb6c2;
+}
+
+/* CONTEÚDO */
+
+main {
+width: 90%;
+max-width: 900px;
+margin: 50px auto;
+}
+
+main h2 {
+margin-bottom: 20px;
+font-size: 25px;
+}
+
+/* FICHEIROS */
+
+.files {
+display: flex;
+flex-direction: column;
+gap: 12px;
+}
+
+.file {
+background: white;
 
 ```
-navigation.classList.toggle("active");
+border: 1px solid #e1e4e8;
+
+border-radius: 8px;
+
+padding: 20px;
+
+display: flex;
+
+align-items: center;
+
+justify-content: space-between;
+
+gap: 20px;
 ```
 
-});
+}
 
-// Close mobile menu after clicking a link
+.file h3 {
+font-size: 17px;
+}
 
-const navigationLinks = document.querySelectorAll(".navigation a");
+.file p {
+margin-top: 5px;
+color: #737b86;
+font-size: 14px;
+}
 
-navigationLinks.forEach(link => {
-
-```
-link.addEventListener("click", () => {
-
-    navigation.classList.remove("active");
-
-});
-```
-
-});
-
-// Current year
-
-document.getElementById("year").textContent =
-new Date().getFullYear();
-
-// Small reveal animation
-
-const revealElements =
-document.querySelectorAll(
-".service-card, .project-card, .about-content, .terminal"
-);
-
-const observer = new IntersectionObserver(
+.file a {
+background: #2563eb;
 
 ```
-entries => {
+color: white;
 
-    entries.forEach(entry => {
+padding: 10px 16px;
 
-        if (entry.isIntersecting) {
+border-radius: 6px;
 
-            entry.target.classList.add("visible");
+text-decoration: none;
 
-        }
+font-size: 14px;
 
-    });
+white-space: nowrap;
+```
 
-},
+}
 
-{
-    threshold: 0.12
+.file a:hover {
+background: #1d4ed8;
+}
+
+/* RODAPÉ */
+
+footer {
+text-align: center;
+
+```
+padding: 30px;
+
+color: #7a828c;
+
+font-size: 13px;
+```
+
+}
+
+/* TELEMÓVEL */
+
+@media (max-width: 600px) {
+
+```
+.file {
+    align-items: flex-start;
+
+    flex-direction: column;
+}
+
+.file a {
+    width: 100%;
+
+    text-align: center;
 }
 ```
 
-);
-
-revealElements.forEach(element => {
-
-```
-element.classList.add("reveal");
-
-observer.observe(element);
-```
-
-});
+}
