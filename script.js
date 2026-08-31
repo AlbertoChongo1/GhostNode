@@ -1,57 +1,20 @@
-const files = [
-
-    {
-        name: "WhatsApp GhostNode",
-        category: "Apps",
-        badge: "APP",
-        icon: "WHATSAPP",
-        file: "downloads/whatsapp.apk"
-    },
-
-    {
-        name: "Pacote de Ferramentas",
-        category: "Arquivos",
-        badge: "ARQUIVO",
-        icon: "ZIP",
-        file: "downloads/ferramentas.zip"
-    },
-
-    {
-        name: "Configuração MikroTik",
-        category: "Códigos",
-        badge: "CÓDIGO",
-        icon: "MIKROTIK",
-        file: "downloads/mikrotik.txt"
-    },
-
-    {
-        name: "Vídeo Tutorial",
-        category: "Vídeos",
-        badge: "VÍDEO",
-        icon: "VIDEO",
-        file: "downloads/tutorial.mp4"
-    },
-
-    {
-        name: "Documento PDF",
-        category: "Outros",
-        badge: "PDF",
-        icon: "PDF",
-        file: "downloads/documento.pdf"
-    }
-
-];
+const files = [];
 
 
-const downloads = document.getElementById("downloads");
+const downloads =
+    document.getElementById("downloads");
 
-const search = document.getElementById("search");
+const search =
+    document.getElementById("search");
 
-const noResults = document.getElementById("noResults");
+const noResults =
+    document.getElementById("noResults");
 
-const categories = document.querySelectorAll(".category");
+const categories =
+    document.querySelectorAll(".category");
 
-const themeButton = document.getElementById("themeButton");
+const themeButton =
+    document.getElementById("themeButton");
 
 
 let selectedCategory = "Todos";
@@ -61,27 +24,30 @@ let selectedCategory = "Todos";
 
 function displayFiles() {
 
-    const searchText = search.value
-        .toLowerCase()
-        .trim();
+    const searchText =
+        search.value
+            .toLowerCase()
+            .trim();
 
 
-    const filteredFiles = files.filter(file => {
+    const filteredFiles =
+        files.filter(file => {
 
-        const categoryMatch =
-            selectedCategory === "Todos" ||
-            file.category === selectedCategory;
-
-
-        const searchMatch =
-            file.name
-                .toLowerCase()
-                .includes(searchText);
+            const categoryMatch =
+                selectedCategory === "Todos" ||
+                file.category === selectedCategory;
 
 
-        return categoryMatch && searchMatch;
+            const searchMatch =
+                file.name
+                    .toLowerCase()
+                    .includes(searchText);
 
-    });
+
+            return categoryMatch &&
+                   searchMatch;
+
+        });
 
 
     downloads.innerHTML = "";
@@ -89,7 +55,9 @@ function displayFiles() {
 
     filteredFiles.forEach(file => {
 
-        const card = document.createElement("div");
+        const card =
+            document.createElement("div");
+
 
         card.className = "card";
 
@@ -98,7 +66,10 @@ function displayFiles() {
             file.category
                 .toLowerCase()
                 .normalize("NFD")
-                .replace(/[\u0300-\u036f]/g, "");
+                .replace(
+                    /[\u0300-\u036f]/g,
+                    ""
+                );
 
 
         card.innerHTML = `
@@ -114,7 +85,7 @@ function displayFiles() {
 
                 <div class="card-title">
 
-                    ${file.name}
+                    ${escapeHTML(file.name)}
 
                 </div>
 
@@ -123,14 +94,14 @@ function displayFiles() {
 
                     <span class="badge">
 
-                        ${file.badge}
+                        ${escapeHTML(file.badge)}
 
                     </span>
 
 
                     <button
                         class="download-button"
-                        onclick="downloadFile('${file.file}')">
+                        type="button">
 
                         ⇩ Download
 
@@ -143,6 +114,22 @@ function displayFiles() {
         `;
 
 
+        const downloadButton =
+            card.querySelector(
+                ".download-button"
+            );
+
+
+        downloadButton.addEventListener(
+            "click",
+            () => {
+
+                downloadFile(file.file);
+
+            }
+        );
+
+
         downloads.appendChild(card);
 
     });
@@ -150,11 +137,13 @@ function displayFiles() {
 
     if (filteredFiles.length === 0) {
 
-        noResults.style.display = "block";
+        noResults.style.display =
+            "block";
 
     } else {
 
-        noResults.style.display = "none";
+        noResults.style.display =
+            "none";
 
     }
 
@@ -165,17 +154,53 @@ function displayFiles() {
 
 function downloadFile(file) {
 
-    const link = document.createElement("a");
+    const link =
+        document.createElement("a");
+
 
     link.href = file;
 
-    link.download = "";
+
+    link.setAttribute(
+        "download",
+        ""
+    );
+
+
+    link.target = "_blank";
+
 
     document.body.appendChild(link);
 
+
     link.click();
 
+
     link.remove();
+
+}
+
+
+/* PROTEÇÃO CONTRA HTML */
+
+function escapeHTML(text) {
+
+    return text.replace(
+        /[&<>"']/g,
+        character => ({
+
+            "&": "&amp;",
+
+            "<": "&lt;",
+
+            ">": "&gt;",
+
+            '"': "&quot;",
+
+            "'": "&#039;"
+
+        }[character])
+    );
 
 }
 
@@ -184,69 +209,85 @@ function downloadFile(file) {
 
 categories.forEach(button => {
 
-    button.addEventListener("click", () => {
+    button.addEventListener(
+        "click",
+        () => {
 
-        categories.forEach(btn => {
+            categories.forEach(
+                item => {
 
-            btn.classList.remove("active");
+                    item.classList.remove(
+                        "active"
+                    );
 
-        });
-
-
-        button.classList.add("active");
-
-
-        selectedCategory =
-            button.dataset.category;
+                }
+            );
 
 
-        displayFiles();
+            button.classList.add(
+                "active"
+            );
 
-    });
+
+            selectedCategory =
+                button.dataset.category;
+
+
+            displayFiles();
+
+        }
+    );
 
 });
 
 
 /* PESQUISA */
 
-search.addEventListener("input", displayFiles);
+search.addEventListener(
+    "input",
+    displayFiles
+);
 
 
 /* TEMA */
 
-themeButton.addEventListener("click", () => {
+themeButton.addEventListener(
+    "click",
+    () => {
 
-    document.body.classList.toggle("light");
-
-
-    if (
-        document.body.classList.contains("light")
-    ) {
-
-        localStorage.setItem(
-            "ghostnode-theme",
+        document.body.classList.toggle(
             "light"
         );
 
-    } else {
+
+        const theme =
+            document.body.classList.contains(
+                "light"
+            )
+            ? "light"
+            : "dark";
+
 
         localStorage.setItem(
             "ghostnode-theme",
-            "dark"
+            theme
         );
 
     }
-
-});
+);
 
 
 /* CARREGAR TEMA */
 
 if (
-    localStorage.getItem("ghostnode-theme") === "light"
+    localStorage.getItem(
+        "ghostnode-theme"
+    ) === "light"
 ) {
 
-    document.body.classList.add("light");
+    document.body.classList.add(
+        "light"
+    );
 
 }
 
