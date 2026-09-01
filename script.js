@@ -1,12 +1,18 @@
 const files = [
 
-    {
+     {
         name: "7-Zip 26.00 x64",
         category: "Apps",
         badge: "EXE",
         icon: "7-ZIP",
         file: "downloads/7z2600-x64.exe",
-        type: "download"
+        type: "download",
+
+        color: "#2563eb",
+
+        posted: "01/09/2026",
+
+        validity: "Sem validade"
     },
 
     {
@@ -15,8 +21,13 @@ const files = [
         badge: "APK",
         icon: "Wyre Lite",
         file: "https://play.google.com/store/apps/details?id=com.wyrhub.lite",
-        type: "external"
-    }
+        type: "external",
+
+        color: "#16a34a",
+
+        posted: "01/09/2026",
+
+        validity: null
 
 ];
 
