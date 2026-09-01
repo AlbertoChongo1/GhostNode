@@ -1,13 +1,10 @@
-```css
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-
 :root {
-
     --background: #07111f;
     --header: #0b1728;
     --navigation: #0d1b2e;
@@ -18,601 +15,312 @@
     --primary: #18b6a4;
     --primary-hover: #12d1bc;
     --orange: #ff9f43;
-
 }
 
-
-/* ================================
-   BODY
-================================ */
+/* BODY */
 
 body {
-
     min-height: 100vh;
-
     background: var(--background);
-
     color: var(--text);
-
-    font-family:
-        Arial,
-        Helvetica,
-        sans-serif;
-
+    font-family: Arial, Helvetica, sans-serif;
 }
 
-
-/* ================================
-   HEADER
-================================ */
+/* HEADER */
 
 .header {
-
     height: 58px;
-
     display: flex;
-
     align-items: center;
-
     gap: 20px;
-
     padding: 0 25px;
-
     background: var(--header);
-
-    border-bottom:
-        1px solid var(--border);
-
+    border-bottom: 1px solid var(--border);
 }
-
 
 .logo {
-
     min-width: 170px;
-
     font-size: 21px;
-
     font-weight: 700;
-
     letter-spacing: 0.3px;
-
 }
-
 
 .search {
-
     flex: 1;
-
     max-width: 950px;
-
     margin: auto;
-
     height: 37px;
-
     padding: 0 18px;
-
     border: 1px solid #29445d;
-
     border-radius: 20px;
-
     outline: none;
-
     background: #13263c;
-
     color: white;
-
     font-size: 14px;
-
 }
-
 
 .search:focus {
-
     border-color: var(--primary);
-
 }
-
 
 .search::placeholder {
-
     color: #7f96aa;
-
 }
-
 
 .theme-button {
-
     width: 37px;
-
     height: 37px;
-
     border: 1px solid #29445d;
-
     border-radius: 50%;
-
     background: #13263c;
-
     color: var(--orange);
-
     cursor: pointer;
-
     font-size: 17px;
-
 }
-
 
 .theme-button:hover {
-
     background: #1b344d;
-
 }
 
-
-/* ================================
-   CATEGORIAS
-================================ */
+/* CATEGORIAS */
 
 .categories {
-
     display: flex;
-
     justify-content: center;
-
     align-items: center;
-
     gap: 8px;
-
     padding: 11px;
-
     background: var(--navigation);
-
-    border-bottom:
-        1px solid var(--border);
-
+    border-bottom: 1px solid var(--border);
     flex-wrap: wrap;
-
 }
-
 
 .category {
-
     border: none;
-
     border-radius: 18px;
-
     padding: 8px 16px;
-
     background: #14283e;
-
     color: #b7c8d5;
-
     cursor: pointer;
-
     font-size: 13px;
-
-    transition:
-        background 0.2s,
-        color 0.2s;
-
+    transition: background 0.2s, color 0.2s, transform 0.2s;
 }
-
 
 .category:hover {
-
     background: #1c3a52;
-
     color: white;
-
+    transform: translateY(-1px);
 }
-
 
 .category.active {
-
     background: var(--primary);
-
     color: #061513;
-
     font-weight: 600;
-
 }
 
-
-/* ================================
-   CONTEÚDO
-================================ */
+/* CONTEÚDO */
 
 main {
-
-    width:
-        min(1120px, calc(100% - 30px));
-
-    margin:
-        18px auto 70px;
-
+    width: min(1120px, calc(100% - 30px));
+    margin: 18px auto 70px;
 }
 
-
-/* ================================
-   GRID
-================================ */
+/* GRID */
 
 .downloads {
-
     display: grid;
-
-    grid-template-columns:
-        repeat(5, 1fr);
-
+    grid-template-columns: repeat(5, 1fr);
     gap: 13px;
-
 }
 
-
-/* ================================
-   CARD
-================================ */
+/* CARD */
 
 .card {
-
     overflow: hidden;
-
     background: var(--card);
-
-    border:
-        1px solid var(--border);
-
+    border: 1px solid var(--border);
     border-radius: 10px;
-
-    transition:
-        transform 0.2s,
-        border-color 0.2s,
-        box-shadow 0.2s;
-
+    transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
 }
-
 
 .card:hover {
-
-    transform:
-        translateY(-3px);
-
-    border-color:
-        #2b6878;
-
-    box-shadow:
-        0 8px 20px rgba(0, 0, 0, 0.18);
-
+    transform: translateY(-3px);
+    border-color: #2b6878;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
 }
 
-
-/* ================================
-   ÁREA SUPERIOR DO CARD
-================================ */
+/* ÁREA SUPERIOR */
 
 .card-image {
-
     height: 125px;
-
     display: flex;
-
     align-items: center;
-
     justify-content: center;
-
     padding: 10px;
-
     text-align: center;
-
     font-size: 19px;
-
     font-weight: 700;
-
     color: white;
-
 }
 
-
-/* ================================
-   CONTEÚDO DO CARD
-================================ */
+/* CONTEÚDO */
 
 .card-content {
-
-    padding: 10px;
-
+    padding: 11px;
 }
-
 
 .card-title {
-
     min-height: 36px;
-
     line-height: 18px;
-
     font-size: 13px;
-
     font-weight: 600;
-
 }
 
-
-/* ================================
-   INFORMAÇÕES DO FICHEIRO
-================================ */
+/* INFORMAÇÕES */
 
 .file-info {
-
     display: flex;
-
     flex-direction: column;
-
     gap: 5px;
-
     margin-top: 8px;
-
     margin-bottom: 10px;
-
     color: var(--secondary);
-
     font-size: 11px;
-
     line-height: 15px;
-
 }
 
-
-.file-posted {
-
-    display: block;
-
-}
-
-
+.file-posted,
 .file-validity {
-
     display: block;
-
 }
 
-
-/* ================================
-   FOOTER DO CARD
-================================ */
+/* FOOTER DO CARD */
 
 .card-footer {
-
     display: flex;
-
     align-items: center;
-
     justify-content: space-between;
-
     gap: 5px;
-
     margin-top: 8px;
-
 }
 
-
-/* ================================
-   BADGE
-================================ */
+/* BADGE */
 
 .badge {
-
-    padding:
-        4px 7px;
-
+    padding: 4px 7px;
     border-radius: 8px;
-
-    background:
-        #1bb8a5;
-
-    color:
-        #061513;
-
+    color: white;
     font-size: 9px;
-
     font-weight: 700;
-
-    text-transform:
-        uppercase;
-
+    text-transform: uppercase;
 }
 
-
-/* ================================
-   BOTÃO DOWNLOAD
-================================ */
+/* BOTÃO */
 
 .download-button {
-
     border: none;
-
     background: transparent;
-
     color: var(--secondary);
-
     cursor: pointer;
-
     font-size: 12px;
-
-    transition:
-        color 0.2s;
-
+    transition: color 0.2s, transform 0.2s;
 }
-
 
 .download-button:hover {
-
     color: var(--primary-hover);
-
+    transform: translateX(2px);
 }
 
-
-/* ================================
-   SEM RESULTADOS
-================================ */
+/* SEM RESULTADOS */
 
 .no-results {
-
     display: none;
-
     padding: 70px 20px;
-
     text-align: center;
-
     color: var(--secondary);
-
 }
 
-
-/* ================================
-   FOOTER
-================================ */
+/* FOOTER */
 
 footer {
-
     position: fixed;
-
     left: 0;
-
     bottom: 0;
-
     width: 100%;
-
     height: 35px;
-
     display: flex;
-
     align-items: center;
-
     justify-content: center;
-
     background: var(--background);
-
-    border-top:
-        1px solid var(--border);
-
+    border-top: 1px solid var(--border);
     color: #60788c;
-
     font-size: 11px;
-
 }
 
-
-/* ================================
-   TEMA CLARO
-================================ */
+/* TEMA CLARO */
 
 body.light {
-
     --background: #eef3f5;
-
     --header: #ffffff;
-
     --navigation: #ffffff;
-
     --card: #ffffff;
-
     --border: #d5e0e5;
-
     --text: #152735;
-
     --secondary: #607482;
-
 }
-
 
 body.light .search {
-
     background: #f2f6f8;
-
     color: #152735;
-
     border-color: #d5e0e5;
-
 }
-
 
 body.light .category {
-
     background: #edf2f4;
-
     color: #405663;
-
 }
-
 
 body.light .category:hover {
-
     background: #dfe9ed;
-
 }
 
-
-/* ================================
-   RESPONSIVO
-================================ */
+/* RESPONSIVO */
 
 @media (max-width: 1000px) {
 
     .downloads {
-
-        grid-template-columns:
-            repeat(3, 1fr);
-
+        grid-template-columns: repeat(3, 1fr);
     }
 
 }
-
 
 @media (max-width: 650px) {
 
     .header {
-
         height: auto;
-
         padding: 12px;
-
         flex-wrap: wrap;
-
     }
-
 
     .logo {
-
         min-width: auto;
-
     }
-
 
     .search {
-
         order: 3;
-
         flex-basis: 100%;
-
     }
 
-
     .downloads {
-
-        grid-template-columns:
-            repeat(2, 1fr);
-
+        grid-template-columns: repeat(2, 1fr);
     }
 
 }
-
 
 @media (max-width: 420px) {
 
     .downloads {
-
         grid-template-columns: 1fr;
-
     }
 
 }
-```
