@@ -1,6 +1,6 @@
 const files = [
 
-     {
+        {
         name: "7-Zip 26.00 x64",
         category: "Apps",
         badge: "EXE",
@@ -28,6 +28,7 @@ const files = [
         posted: "01/09/2026",
 
         validity: null
+    }
 
 ];
 
