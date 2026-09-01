@@ -24,17 +24,17 @@ const files = [
         validity: null
     },
 
-       {
+       /*{
         name: "KMSAut0.zip",
         category: "Apps",
         badge: "EXE",
         icon: "KMSAUTO",
         file: "downloads/KMSAut0.zip",
         type: "download",
-       color: "#FFD700",  /* Amarelo ouro */,
+       color: "#FFD700",   Amarelo ouro ,
         posted: "01/09/2026",
         validity: null
-    }
+    }*/
 
 ];
 
