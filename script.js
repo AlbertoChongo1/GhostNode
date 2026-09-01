@@ -1,6 +1,7 @@
+```javascript
 const files = [
 
-        {
+    {
         name: "7-Zip 26.00 x64",
         category: "Apps",
         badge: "EXE",
@@ -12,7 +13,7 @@ const files = [
 
         posted: "01/09/2026",
 
-        validity: "Sem validade"
+        validity: null
     },
 
     {
@@ -52,7 +53,9 @@ const themeButton =
 let selectedCategory = "Todos";
 
 
-/* MOSTRAR FICHEIROS */
+/* ================================
+   MOSTRAR FICHEIROS
+================================ */
 
 function displayFiles() {
 
@@ -94,6 +97,14 @@ function displayFiles() {
         card.className = "card";
 
 
+        /* COR DO FICHEIRO */
+
+        const fileColor =
+            file.color || "#2563eb";
+
+
+        /* CLASSE DA CATEGORIA */
+
         const categoryClass =
             file.category
                 .toLowerCase()
@@ -104,9 +115,33 @@ function displayFiles() {
                 );
 
 
+        /* VALIDADE */
+
+        const validityHTML =
+            file.validity
+                ? `
+                    <span class="file-validity">
+                        ⏳ Validade: ${escapeHTML(file.validity)}
+                    </span>
+                  `
+                : `
+                    <span class="file-validity">
+                        ♾️ Sem validade
+                    </span>
+                  `;
+
+
+        /* CARTÃO */
+
         card.innerHTML = `
 
-            <div class="card-image ${categoryClass}">
+            <div
+                class="card-image ${categoryClass}"
+                style="
+                    background: ${fileColor};
+                    border-color: ${fileColor};
+                "
+            >
 
                 ${escapeHTML(file.icon)}
 
@@ -122,9 +157,29 @@ function displayFiles() {
                 </div>
 
 
+                <div class="file-info">
+
+                    <span class="file-posted">
+
+                        📅 Postado:
+                        ${escapeHTML(file.posted)}
+
+                    </span>
+
+
+                    ${validityHTML}
+
+                </div>
+
+
                 <div class="card-footer">
 
-                    <span class="badge">
+                    <span
+                        class="badge"
+                        style="
+                            background: ${fileColor};
+                        "
+                    >
 
                         ${escapeHTML(file.badge)}
 
@@ -133,7 +188,8 @@ function displayFiles() {
 
                     <button
                         class="download-button"
-                        type="button">
+                        type="button"
+                    >
 
                         ⇩ Download
 
@@ -145,6 +201,8 @@ function displayFiles() {
 
         `;
 
+
+        /* BOTÃO */
 
         const downloadButton =
             card.querySelector(
@@ -167,6 +225,8 @@ function displayFiles() {
     });
 
 
+    /* SEM RESULTADOS */
+
     if (filteredFiles.length === 0) {
 
         noResults.style.display =
@@ -182,9 +242,12 @@ function displayFiles() {
 }
 
 
-/* DOWNLOAD / LINK EXTERNO */
+/* ================================
+   DOWNLOAD / LINK EXTERNO
+================================ */
 
 function downloadFile(file) {
+
 
     /* LINK EXTERNO */
 
@@ -228,11 +291,13 @@ function downloadFile(file) {
 }
 
 
-/* PROTEÇÃO CONTRA HTML */
+/* ================================
+   PROTEÇÃO CONTRA HTML
+================================ */
 
 function escapeHTML(text) {
 
-    return text.replace(
+    return String(text).replace(
         /[&<>"']/g,
         character => ({
 
@@ -252,7 +317,9 @@ function escapeHTML(text) {
 }
 
 
-/* CATEGORIAS */
+/* ================================
+   CATEGORIAS
+================================ */
 
 categories.forEach(button => {
 
@@ -288,7 +355,9 @@ categories.forEach(button => {
 });
 
 
-/* PESQUISA */
+/* ================================
+   PESQUISA
+================================ */
 
 search.addEventListener(
     "input",
@@ -296,7 +365,9 @@ search.addEventListener(
 );
 
 
-/* TEMA */
+/* ================================
+   TEMA
+================================ */
 
 themeButton.addEventListener(
     "click",
@@ -324,7 +395,9 @@ themeButton.addEventListener(
 );
 
 
-/* CARREGAR TEMA */
+/* ================================
+   CARREGAR TEMA
+================================ */
 
 if (
     localStorage.getItem(
@@ -339,6 +412,9 @@ if (
 }
 
 
-/* INICIAR */
+/* ================================
+   INICIAR
+================================ */
 
 displayFiles();
+```
