@@ -1,4 +1,3 @@
-```javascript
 const files = [
 
     {
@@ -39,24 +38,49 @@ document.addEventListener("DOMContentLoaded", function () {
     let selectedCategory = "Todos";
 
 
-    /* ==========================
+    /* =========================
        VERIFICAR ELEMENTOS
-    ========================== */
+    ========================= */
 
     if (!downloads) {
-        console.error("Erro: elemento #downloads não encontrado.");
+        console.error("GhostNode: #downloads não encontrado.");
         return;
     }
 
     if (!search) {
-        console.error("Erro: elemento #search não encontrado.");
+        console.error("GhostNode: #search não encontrado.");
         return;
     }
 
 
-    /* ==========================
+    /* =========================
+       PROTEÇÃO CONTRA HTML
+    ========================= */
+
+    function escapeHTML(text) {
+
+        return String(text).replace(
+            /[&<>"']/g,
+            function (character) {
+
+                const entities = {
+                    "&": "&amp;",
+                    "<": "&lt;",
+                    ">": "&gt;",
+                    '"': "&quot;",
+                    "'": "&#039;"
+                };
+
+                return entities[character];
+            }
+        );
+
+    }
+
+
+    /* =========================
        MOSTRAR FICHEIROS
-    ========================== */
+    ========================= */
 
     function displayFiles() {
 
@@ -94,66 +118,91 @@ document.addEventListener("DOMContentLoaded", function () {
             card.className = "card";
 
 
-            /* ==========================
-               CARTÃO
-            ========================== */
+            /* =========================
+               CARD
+            ========================= */
 
             card.innerHTML = `
+
                 <div
                     class="card-image"
                     style="background: ${file.color};"
                 >
+
                     ${escapeHTML(file.icon)}
+
                 </div>
+
 
                 <div class="card-content">
 
+
                     <div class="card-title">
+
                         ${escapeHTML(file.name)}
+
                     </div>
+
 
                     <div class="file-info">
 
                         <span class="file-posted">
-                            📅 Postado: ${escapeHTML(file.posted)}
+
+                            📅 Postado:
+                            ${escapeHTML(file.posted)}
+
                         </span>
 
+
                         <span class="file-validity">
+
                             ${
                                 file.validity
-                                    ? "⏳ Validade: " +
-                                      escapeHTML(file.validity)
-                                    : "♾️ Sem validade"
+                                ? "⏳ Validade: " +
+                                  escapeHTML(file.validity)
+                                : "♾️ Sem validade"
                             }
+
                         </span>
 
                     </div>
 
+
                     <div class="card-footer">
+
 
                         <span
                             class="badge"
-                            style="background: ${file.color};"
+                            style="
+                                background: ${file.color};
+                            "
                         >
+
                             ${escapeHTML(file.badge)}
+
                         </span>
+
 
                         <button
                             class="download-button"
                             type="button"
                         >
+
                             ⇩ Download
+
                         </button>
+
 
                     </div>
 
                 </div>
+
             `;
 
 
-            /* ==========================
-               BOTÃO DOWNLOAD
-            ========================== */
+            /* =========================
+               BOTÃO
+            ========================= */
 
             const downloadButton =
                 card.querySelector(".download-button");
@@ -174,32 +223,29 @@ document.addEventListener("DOMContentLoaded", function () {
         });
 
 
-        /* ==========================
+        /* =========================
            SEM RESULTADOS
-        ========================== */
+        ========================= */
 
         if (noResults) {
 
-            if (filteredFiles.length === 0) {
-
-                noResults.style.display = "block";
-
-            } else {
-
-                noResults.style.display = "none";
-
-            }
+            noResults.style.display =
+                filteredFiles.length === 0
+                ? "block"
+                : "none";
 
         }
 
     }
 
 
-    /* ==========================
-       DOWNLOAD / LINK EXTERNO
-    ========================== */
+    /* =========================
+       DOWNLOAD
+    ========================= */
 
     function downloadFile(file) {
+
+        /* LINK EXTERNO */
 
         if (file.type === "external") {
 
@@ -214,6 +260,8 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
 
+        /* DOWNLOAD LOCAL */
+
         const link =
             document.createElement("a");
 
@@ -227,42 +275,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
         link.click();
 
-        link.remove();
+        document.body.removeChild(link);
 
     }
 
 
-    /* ==========================
-       PROTEÇÃO HTML
-    ========================== */
-
-    function escapeHTML(text) {
-
-        return String(text).replace(
-            /[&<>"']/g,
-            function (character) {
-
-                const entities = {
-
-                    "&": "&amp;",
-                    "<": "&lt;",
-                    ">": "&gt;",
-                    '"': "&quot;",
-                    "'": "&#039;"
-
-                };
-
-                return entities[character];
-
-            }
-        );
-
-    }
-
-
-    /* ==========================
+    /* =========================
        CATEGORIAS
-    ========================== */
+    ========================= */
 
     categories.forEach(function (button) {
 
@@ -294,19 +314,23 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
 
-    /* ==========================
+    /* =========================
        PESQUISA
-    ========================== */
+    ========================= */
 
     search.addEventListener(
         "input",
-        displayFiles
+        function () {
+
+            displayFiles();
+
+        }
     );
 
 
-    /* ==========================
+    /* =========================
        TEMA
-    ========================== */
+    ========================= */
 
     if (themeButton) {
 
@@ -319,8 +343,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 const theme =
                     document.body.classList.contains("light")
-                        ? "light"
-                        : "dark";
+                    ? "light"
+                    : "dark";
 
 
                 localStorage.setItem(
@@ -334,26 +358,27 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
-    /* ==========================
+    /* =========================
        CARREGAR TEMA
-    ========================== */
+    ========================= */
 
-    if (
+    const savedTheme =
         localStorage.getItem(
             "ghostnode-theme"
-        ) === "light"
-    ) {
+        );
+
+
+    if (savedTheme === "light") {
 
         document.body.classList.add("light");
 
     }
 
 
-    /* ==========================
+    /* =========================
        INICIAR
-    ========================== */
+    ========================= */
 
     displayFiles();
 
 });
-```
