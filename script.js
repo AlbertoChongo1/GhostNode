@@ -31,7 +31,7 @@ const files = [
         icon: "KMSAUTO",
         file: "downloads/KMSAut0.zip",
         type: "download",
-       color: "#FFD700",  /* Amarelo ouro */
+       color: "#FFD700",  /* Amarelo ouro */,
         posted: "01/09/2026",
         validity: null
     }
