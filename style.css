@@ -1,5 +1,5 @@
 ```css
- {
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -9,29 +9,22 @@
 :root {
 
     --background: #07111f;
-
     --header: #0b1728;
-
     --navigation: #0d1b2e;
-
     --card: #102238;
-
     --border: #1d3852;
-
     --text: #f2f7fa;
-
     --secondary: #91a7b8;
-
     --primary: #18b6a4;
-
     --primary-hover: #12d1bc;
-
     --orange: #ff9f43;
 
 }
 
 
-/* BODY */
+/* ================================
+   BODY
+================================ */
 
 body {
 
@@ -49,7 +42,9 @@ body {
 }
 
 
-/* HEADER */
+/* ================================
+   HEADER
+================================ */
 
 .header {
 
@@ -153,7 +148,9 @@ body {
 }
 
 
-/* CATEGORIAS */
+/* ================================
+   CATEGORIAS
+================================ */
 
 .categories {
 
@@ -220,7 +217,9 @@ body {
 }
 
 
-/* CONTEÚDO */
+/* ================================
+   CONTEÚDO
+================================ */
 
 main {
 
@@ -233,7 +232,9 @@ main {
 }
 
 
-/* GRID */
+/* ================================
+   GRID
+================================ */
 
 .downloads {
 
@@ -247,7 +248,9 @@ main {
 }
 
 
-/* CARD */
+/* ================================
+   CARD
+================================ */
 
 .card {
 
@@ -282,7 +285,9 @@ main {
 }
 
 
-/* ÁREA SUPERIOR */
+/* ================================
+   ÁREA SUPERIOR DO CARD
+================================ */
 
 .card-image {
 
@@ -307,69 +312,9 @@ main {
 }
 
 
-/* CORES PADRÃO DAS CATEGORIAS */
-
-.card-image.apps {
-
-    background:
-        linear-gradient(
-            135deg,
-            #087f8c,
-            #13b6a5
-        );
-
-}
-
-
-.card-image.arquivos {
-
-    background:
-        linear-gradient(
-            135deg,
-            #2457a6,
-            #347fc1
-        );
-
-}
-
-
-.card-image.codigos {
-
-    background:
-        linear-gradient(
-            135deg,
-            #343d78,
-            #5664ae
-        );
-
-}
-
-
-.card-image.videos {
-
-    background:
-        linear-gradient(
-            135deg,
-            #9c5520,
-            #d97827
-        );
-
-}
-
-
-.card-image.outros {
-
-    background:
-        linear-gradient(
-            135deg,
-            #17645c,
-            #239a89
-        );
-
-}
-
-
-/* CONTEÚDO DO CARD */
+/* ================================
+   CONTEÚDO DO CARD
+================================ */
 
 .card-content {
 
@@ -391,7 +336,9 @@ main {
 }
 
 
-/* INFORMAÇÕES DO FICHEIRO */
+/* ================================
+   INFORMAÇÕES DO FICHEIRO
+================================ */
 
 .file-info {
 
@@ -428,7 +375,9 @@ main {
 }
 
 
-/* FOOTER DO CARD */
+/* ================================
+   FOOTER DO CARD
+================================ */
 
 .card-footer {
 
@@ -445,7 +394,9 @@ main {
 }
 
 
-/* BADGE */
+/* ================================
+   BADGE
+================================ */
 
 .badge {
 
@@ -470,7 +421,9 @@ main {
 }
 
 
-/* BOTÃO DOWNLOAD */
+/* ================================
+   BOTÃO DOWNLOAD
+================================ */
 
 .download-button {
 
@@ -497,7 +450,9 @@ main {
 }
 
 
-/* SEM RESULTADOS */
+/* ================================
+   SEM RESULTADOS
+================================ */
 
 .no-results {
 
@@ -512,7 +467,9 @@ main {
 }
 
 
-/* FOOTER */
+/* ================================
+   FOOTER
+================================ */
 
 footer {
 
@@ -594,7 +551,9 @@ body.light .category:hover {
 }
 
 
-/* RESPONSIVO */
+/* ================================
+   RESPONSIVO
+================================ */
 
 @media (max-width: 1000px) {
 
