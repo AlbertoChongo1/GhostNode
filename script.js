@@ -1,11 +1,12 @@
 const files = [
 
-   {
+    {
         name: "7-Zip 26.00 x64",
         category: "Apps",
         badge: "EXE",
         icon: "7-ZIP",
-        file: "downloads/7z2600-x64.exe"
+        file: "downloads/7z2600-x64.exe",
+        type: "download"
     },
 
     {
@@ -13,7 +14,8 @@ const files = [
         category: "Apps",
         badge: "APK",
         icon: "Wyre Lite",
-        file: "downloads/https://play.google.com/store/apps/details?id=com.wyrhub.lite"
+        file: "https://play.google.com/store/apps/details?id=com.wyrhub.lite",
+        type: "external"
     }
 
 ];
@@ -94,7 +96,7 @@ function displayFiles() {
 
             <div class="card-image ${categoryClass}">
 
-                ${file.icon}
+                ${escapeHTML(file.icon)}
 
             </div>
 
@@ -142,7 +144,7 @@ function displayFiles() {
             "click",
             () => {
 
-                downloadFile(file.file);
+                downloadFile(file);
 
             }
         );
@@ -168,24 +170,39 @@ function displayFiles() {
 }
 
 
-/* DOWNLOAD */
+/* DOWNLOAD / LINK EXTERNO */
 
 function downloadFile(file) {
+
+    /* LINK EXTERNO */
+
+    if (file.type === "external") {
+
+        window.open(
+            file.file,
+            "_blank",
+            "noopener,noreferrer"
+        );
+
+        return;
+
+    }
+
+
+    /* DOWNLOAD LOCAL */
 
     const link =
         document.createElement("a");
 
 
-    link.href = file;
+    link.href =
+        file.file;
 
 
     link.setAttribute(
         "download",
         ""
     );
-
-
-    link.target = "_blank";
 
 
     document.body.appendChild(link);
